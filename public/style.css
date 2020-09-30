@@ -13,11 +13,11 @@ body{
   background-color: #333;
 }
 
-li {
+.liNav {
   float: left;
 }
 
-li a {
+.liNav a {
   display: block;
   color: white;
   text-align: center;
@@ -25,11 +25,32 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+.liNav a:hover {
   color: darkgrey;
   text-decoration: none;
 }
 
 #title:hover {
   color: white;
+}
+
+#ulImg {
+  width: 200px;
+  display: block;
+}
+
+#ulMap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#liMap {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 28%;
+  margin: 2%;
+  padding: 2%
 }

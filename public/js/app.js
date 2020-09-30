@@ -56,13 +56,13 @@ class Menu extends React.Component {
         </div>
         <div className="foods-container">
           <h2>Menu</h2>
-            <ul>
+            <ul id="ulMap">
               {this.state.foods.map( food => { return(
-                <li key={food._id}>
+                <li id="liMap" key={food._id}>
                 <h4>{food.name}</h4>
                 <h4>{food.price}</h4>
                 <h6>{food.course}</h6>
-                <img src={food.image} alt={food.name} />
+                <img id="ulImg" src={food.image} alt={food.name} />
                 <p>{food.description}</p>
                 </li>
               )
@@ -91,9 +91,9 @@ class Nav extends React.Component {
   render = () => {
     return <div>
     <ul id="ulNav">
-      <li><a id ="title" href="#">Mason's Tavern</a></li>
-      <li><a href="#">Menu</a></li>
-      <li><a href="#">Create</a></li>
+      <li className="liNav"><a id ="title" href="#">Mason's Tavern</a></li>
+      <li className="liNav"><a href="#">Menu</a></li>
+      <li className="liNav"><a href="#">Create</a></li>
     </ul>
     </div>
   }
