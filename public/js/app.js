@@ -8,6 +8,14 @@ class Menu extends React.Component {
     foods: []
   }
 
+  deleteFood = event => {
+    axios.delete('/foods/'+ event.target.value).then((response) => {
+      this.setState({
+        foods: response.data
+      })
+    })
+  }
+
   componentDidMount = () => {
     axios.get('/foods')
     .then((response) => {
@@ -64,6 +72,7 @@ class Menu extends React.Component {
                 <h6>{food.course}</h6>
                 <img id="ulImg" src={food.image} alt={food.name} />
                 <p>{food.description}</p>
+                <button value={food._id} onClick={this.deleteFood}>DELETE</button>
                 </li>
               )
               })}
