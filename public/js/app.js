@@ -8,6 +8,21 @@ class Menu extends React.Component {
     foods: []
   }
 
+  updateFood = event => {
+    event.preventDefault()
+    const id = event.target.id
+    axios.put('/foods/'+id, this.state).then((response) => {
+      this.setState({
+        name: '',
+        course: '',
+        price: '',
+        image: '',
+        description: '',
+        foods: response.data
+      })
+    })
+  }
+
   deleteFood = event => {
     axios.delete('/foods/'+ event.target.value).then((response) => {
       this.setState({
@@ -74,6 +89,23 @@ class Menu extends React.Component {
                 <img id="ulImg" src={food.image} alt={food.name} />
                 <p>{food.description}</p>
                 <button value={food._id} onClick={this.deleteFood}>DELETE</button>
+                <details>
+                  <summary>Edit Food</summary>
+                  <form id={food._id} onSubmit={this.updateFood}>
+                    <label htmlFor="name">Dish Name:</label><br/>
+                    <input type="text" onChange={this.handleChange} id="name" value={this.state.name}/><br/>
+                    <label htmlFor="course">Course:</label><br/>
+                    <input type="text" onChange={this.handleChange} id="course" value={this.state.course}/><br/>
+                    <label htmlFor="price">Price:</label><br/>
+                    <input type="number" onChange={this.handleChange} id="price" value={this.state.price}/><br/>
+                    <label htmlFor="image">Image Link:</label><br/>
+                    <input type="text" onChange={this.handleChange} id="image"
+                    value={this.state.image}/><br/>
+                    <label htmlFor="description">Description:</label><br/>
+                    <input type="text" onChange={this.handleChange} id="description" value={this.state.description}/><br/>
+                    <input type="submit" value="Add Dish" />
+                  </form>
+              </details>
                 </li>
               )
               })}
