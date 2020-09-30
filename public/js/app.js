@@ -55,9 +55,8 @@ class App extends React.Component {
   render = () => {
     return(
       <div className="app-container">
-        <Menu />
         <Nav />
-        <h2>Create Food Item</h2>
+        <Menu />
       </div>
     )
   }
