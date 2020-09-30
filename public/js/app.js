@@ -8,7 +8,7 @@ class Menu extends React.Component {
     foods: []
   }
 
-  compnonetDidMount = () => {
+  componentDidMount = () => {
     axios.get('/foods')
     .then((response) => {
       this.setState({
