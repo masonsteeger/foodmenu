@@ -53,7 +53,7 @@ foods.delete('/:id', (req, res) => {
 //  SEED ROUTE
 //=======================
 
-foods.get('/seed', (req, res) => {
+foods.post('/seed', (req, res) => {
   Food.insertMany(foodSeed, (err, manyFoods) => {
     res.redirect('/')
   })
