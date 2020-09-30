@@ -7,6 +7,15 @@ class Menu extends React.Component {
     description: '',
     foods: []
   }
+
+  compnonetDidMount = () => {
+    axios.get('/foods').then(response => {
+      this.setState({
+        foods:response.data
+      })
+    })
+  }
+
   handleChange = (event) => {
     this.setState({[event.target.id]: event.target.value})
   }
@@ -44,7 +53,22 @@ class Menu extends React.Component {
             <input type="submit" value="Add Dish" />
           </form>
         </div>
-      </div>
+        <div className="foods-container">
+          <h2>Menu</h2>
+            <ul>
+              {this.state.foods.map( food => { return(
+                <li key={food._id}>
+                <h4>{food.name}</h4>
+                <h4>{food.price}</h4>
+                <h6>{food.course}</h6>
+                <img src={food.image} alt={food.name} />
+                <p>{food.description}</p>
+                </li>
+              )
+              })}
+            </ul>
+          </div>
+        </div>
 
     )
   }
