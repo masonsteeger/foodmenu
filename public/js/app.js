@@ -88,7 +88,7 @@ class Menu extends React.Component {
           <h2>Menu</h2>
             {courses.map( course => { return(
               <ul id="ulMap">
-                <h1>{course}</h1>
+                <h1>{course}s</h1>
                 {this.state.foods.map( food => {
                   return(
                   course == food.course ?
