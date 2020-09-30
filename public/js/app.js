@@ -1,3 +1,5 @@
+const courses = ["Appetizer", "Entree", "Dessert"]
+
 class Menu extends React.Component {
   state = {
     name: '',
@@ -80,36 +82,38 @@ class Menu extends React.Component {
         </div>
         <div className="foods-container">
           <h2>Menu</h2>
-            <ul id="ulMap">
-              {this.state.foods.map( food => { return(
-                <li id="liMap" key={food._id}>
-                <h4>{food.name}</h4>
-                <h4>{food.price}</h4>
-                <h6>{food.course}</h6>
-                <img id="ulImg" src={food.image} alt={food.name} />
-                <p>{food.description}</p>
-                <button value={food._id} onClick={this.deleteFood}>DELETE</button>
-                <details>
-                  <summary>Edit Food</summary>
-                  <form id={food._id} onSubmit={this.updateFood}>
-                    <label htmlFor="name">Dish Name:</label><br/>
-                    <input type="text" onChange={this.handleChange} id="name" value={this.state.name}/><br/>
-                    <label htmlFor="course">Course:</label><br/>
-                    <input type="text" onChange={this.handleChange} id="course" value={this.state.course}/><br/>
-                    <label htmlFor="price">Price:</label><br/>
-                    <input type="number" onChange={this.handleChange} id="price" value={this.state.price}/><br/>
-                    <label htmlFor="image">Image Link:</label><br/>
-                    <input type="text" onChange={this.handleChange} id="image"
-                    value={this.state.image}/><br/>
-                    <label htmlFor="description">Description:</label><br/>
-                    <input type="text" onChange={this.handleChange} id="description" value={this.state.description}/><br/>
-                    <input type="submit" value="Add Dish" />
-                  </form>
-              </details>
+            {courses.map( course => { return(
+              <ul id="ulMap">
+                <h1>{course}</h1>
+                {this.state.foods.map( food => { return(
+                  <li id="liMap" key={food._id}>
+                  <h4>{food.name}</h4>
+                  <h6>{food.course}</h6>
+                  <img id="ulImg" src={food.image} alt={food.name} />
+                  <p>${food.price}</p>
+                  <p>{food.description}</p>
+                  <button value={food._id} onClick={this.deleteFood}>DELETE</button>
+                  <details>
+                    <summary>Edit Food</summary>
+                    <form id={food._id} onSubmit={this.updateFood}>
+                      <label htmlFor="name">Dish Name:</label><br/>
+                      <input type="text" onChange={this.handleChange} id="name" value={this.state.name}/><br/>
+                      <label htmlFor="course">Course:</label><br/>
+                      <input type="text" onChange={this.handleChange} id="course" value={this.state.course}/><br/>
+                      <label htmlFor="price">Price:</label><br/>
+                      <input type="number" onChange={this.handleChange} id="price" value={this.state.price}/><br/>
+                      <label htmlFor="image">Image Link:</label><br/>
+                      <input type="text" onChange={this.handleChange} id="image"
+                      value={this.state.image}/><br/>
+                      <label htmlFor="description">Description:</label><br/>
+                      <input type="text" onChange={this.handleChange} id="description" value={this.state.description}/><br/>
+                      <input type="submit" value="Add Dish" />
+                    </form>
+                </details>
                 </li>
-              )
-              })}
-            </ul>
+                )})}
+              </ul>
+            )})}
           </div>
         </div>
 
