@@ -70,7 +70,11 @@ class Menu extends React.Component {
             <label htmlFor="name">Dish Name:</label><br/>
             <input type="text" onChange={this.handleChange} id="name" /><br/>
             <label htmlFor="course">Course:</label><br/>
-            <input type="text" onChange={this.handleChange} id="course" /><br/>
+            <select id="course" onChange={this.handleChange}>
+              <option value="Appetizer">Appetizer</option>
+              <option value="Entree">Entree</option>
+              <option value="Dessert">Dessert</option>
+            </select><br/>
             <label htmlFor="price">Price:</label><br/>
             <input type="number" onChange={this.handleChange} id="price" /><br/>
             <label htmlFor="image">Image Link:</label><br/>
@@ -85,7 +89,9 @@ class Menu extends React.Component {
             {courses.map( course => { return(
               <ul id="ulMap">
                 <h1>{course}</h1>
-                {this.state.foods.map( food => { return(
+                {this.state.foods.map( food => {
+                  return(
+                  course == food.course ?
                   <li id="liMap" key={food._id}>
                   <h4>{food.name}</h4>
                   <h6>{food.course}</h6>
@@ -110,7 +116,7 @@ class Menu extends React.Component {
                       <input type="submit" value="Add Dish" />
                     </form>
                 </details>
-                </li>
+                </li> : null
                 )})}
               </ul>
             )})}
