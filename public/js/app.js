@@ -31,6 +31,7 @@ class Menu extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    event.target.reset()
     axios.post('/foods', this.state).then(response => {
       this.setState({
         name: '',
