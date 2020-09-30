@@ -12,7 +12,7 @@ class Menu extends React.Component {
   }
 
   handleSubmit = (event) => {
-    event.preventDeafault()
+    event.preventDefault()
     axios.post('/foods', this.state).then(response => {
       this.setState({
         name: '',
@@ -40,7 +40,7 @@ class Menu extends React.Component {
             <label htmlFor="image">Image Link:</label><br/>
             <input type="text" onChange={this.handleChange} id="image" /><br/>
             <label htmlFor="description">Description:</label><br/>
-            <input type="text" onChange={this.handleChange} /><br/>
+            <input type="text" onChange={this.handleChange} id="description"/><br/>
             <input type="submit" value="Add Dish" />
           </form>
         </div>
